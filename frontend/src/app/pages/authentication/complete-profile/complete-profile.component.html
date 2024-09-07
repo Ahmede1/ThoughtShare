@@ -1,0 +1,355 @@
+<div class="blank-layout-container justify-content-center">
+  <div class="position-relative row w-100 h-100">
+    <div class="col-lg-8 col-xl-9 bg-gredient p-0">
+      <div class="p-24 h-100">
+        <a [routerLink]="['/dashboards/dashboard1']">
+          <img
+            *ngIf="options.theme === 'light'"
+            src="./assets/images/logos/dark-logo.svg"
+            class="align-middle m-2"
+            alt="logo"
+          />
+          <img
+            *ngIf="options.theme === 'dark'"
+            src="./assets/images/logos/light-logo.svg"
+            class="align-middle m-2"
+            alt="logo"
+          />
+        </a>
+
+        <div
+          class="align-items-center justify-content-center img-height d-none d-lg-flex"
+        >
+          <img
+            src="/assets/images/backgrounds/login-bg.svg"
+            alt="login"
+            style="max-width: 500px"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-lg-4 col-xl-3 p-0 d-flex justify-content-center form-container"
+    >
+      <div
+        class="scrollable-container p-32 d-flex align-items-start align-items-lg-center h-100 max-width-form justify-content-center"
+      >
+        <div>
+          <h4 class="f-w-700 f-s-20 m-0">Complete Your Profile</h4>
+          <span class="f-s-14 d-block mat-body-1 m-t-24">
+            Please select your role and complete the profile form.
+          </span>
+
+          <!-- Role Selection -->
+          <mat-form-field appearance="outline" class="w-100 m-t-16">
+            <mat-label>Role</mat-label>
+            <mat-select [(value)]="role">
+              <mat-option value="Creator">Creator</mat-option>
+              <mat-option value="General">General</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Creator Form -->
+          <form
+            *ngIf="role === 'Creator'"
+            [formGroup]="creatorForm"
+            class="m-t-30"
+          >
+            <div class="row custom-row">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Screen Name</mat-label>
+                  <input matInput formControlName="screenName" />
+                  <mat-error
+                    *ngIf="creatorForm.get('screenName')?.hasError('required')"
+                  >
+                    Screen Name is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>UI Language</mat-label>
+                  <input matInput formControlName="uiLanguage" />
+                  <mat-error
+                    *ngIf="creatorForm.get('uiLanguage')?.hasError('required')"
+                  >
+                    UI Language is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Preferred Language</mat-label>
+                  <input matInput formControlName="preferredLanguage" />
+                  <mat-error
+                    *ngIf="
+                      creatorForm.get('preferredLanguage')?.hasError('required')
+                    "
+                  >
+                    Preferred Language is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>First Name</mat-label>
+                  <input matInput formControlName="firstName" />
+                  <mat-error
+                    *ngIf="creatorForm.get('firstName')?.hasError('required')"
+                  >
+                    First Name is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput formControlName="lastName" />
+                  <mat-error
+                    *ngIf="creatorForm.get('lastName')?.hasError('required')"
+                  >
+                    Last Name is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Country of Residence</mat-label>
+                  <input matInput formControlName="countryOfResidence" />
+                  <mat-error
+                    *ngIf="
+                      creatorForm
+                        .get('countryOfResidence')
+                        ?.hasError('required')
+                    "
+                  >
+                    Country of Residence is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Date of Birth</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="picker"
+                    formControlName="dateOfBirth"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error
+                    *ngIf="creatorForm.get('dateOfBirth')?.hasError('required')"
+                  >
+                    Date of Birth is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Seniority Status</mat-label>
+                  <mat-select formControlName="seniorityStatus">
+                    <mat-option value="Beginner">Beginner</mat-option>
+                    <mat-option value="Intermediate">Intermediate</mat-option>
+                    <mat-option value="Expert">Expert</mat-option>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="
+                      creatorForm.get('seniorityStatus')?.hasError('required')
+                    "
+                  >
+                    Seniority Status is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Gender</mat-label>
+                  <mat-select formControlName="gender">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                    <mat-option value="Other">Other</mat-option>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="creatorForm.get('gender')?.hasError('required')"
+                  >
+                    Gender is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Highest Education</mat-label>
+                  <input matInput formControlName="highestEducation" />
+                  <mat-error
+                    *ngIf="
+                      creatorForm.get('highestEducation')?.hasError('required')
+                    "
+                  >
+                    Highest Education is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Brain Dominance</mat-label>
+                  <mat-select formControlName="brainDominance">
+                    <mat-option value="Left">Left</mat-option>
+                    <mat-option value="Right">Right</mat-option>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="
+                      creatorForm.get('brainDominance')?.hasError('required')
+                    "
+                  >
+                    Brain Dominance is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" formControlName="password" />
+                  <mat-error
+                    *ngIf="creatorForm.get('password')?.hasError('required')"
+                  >
+                    Password is required.
+                  </mat-error>
+                  <mat-error
+                    *ngIf="creatorForm.get('password')?.hasError('minlength')"
+                  >
+                    Password must be at least 6 characters long.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <button
+              mat-flat-button
+              color="primary"
+              class="w-100"
+              (click)="submitCreatorForm()"
+            >
+              {{ isLoading ? "Please wait..." : "Submit Creator Profile" }}
+            </button>
+          </form>
+
+          <!-- General Form -->
+          <form
+            *ngIf="role === 'General'"
+            [formGroup]="generalForm"
+            class="m-t-30"
+          >
+            <div class="row custom-row">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Screen Name</mat-label>
+                  <input matInput formControlName="screenName" />
+                  <mat-error
+                    *ngIf="generalForm.get('screenName')?.hasError('required')"
+                  >
+                    Screen Name is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>UI Language</mat-label>
+                  <input matInput formControlName="uiLanguage" />
+                  <mat-error
+                    *ngIf="generalForm.get('uiLanguage')?.hasError('required')"
+                  >
+                    UI Language is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Preferred Language</mat-label>
+                  <input matInput formControlName="preferredLanguage" />
+                  <mat-error
+                    *ngIf="
+                      generalForm.get('preferredLanguage')?.hasError('required')
+                    "
+                  >
+                  Preferred Language is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Gender</mat-label>
+                  <mat-select formControlName="gender">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                    <mat-option value="Other">Other</mat-option>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="generalForm.get('gender')?.hasError('required')"
+                  >
+                    Gender is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Highest Education</mat-label>
+                  <input matInput formControlName="highestEducation" />
+                  <mat-error
+                    *ngIf="
+                      generalForm.get('highestEducation')?.hasError('required')
+                    "
+                  >
+                    Highest Education is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Brain Dominance</mat-label>
+                  <mat-select formControlName="brainDominance">
+                    <mat-option value="Left">Left</mat-option>
+                    <mat-option value="Right">Right</mat-option>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="
+                      generalForm.get('brainDominance')?.hasError('required')
+                    "
+                  >
+                    Brain Dominance is required.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-12">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" formControlName="password" />
+                  <mat-error
+                    *ngIf="generalForm.get('password')?.hasError('required')"
+                  >
+                    Password is required.
+                  </mat-error>
+                  <mat-error
+                    *ngIf="generalForm.get('password')?.hasError('minlength')"
+                  >
+                    Password must be at least 6 characters long.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <button
+              mat-flat-button
+              color="primary"
+              class="w-100"
+              (click)="submitGeneralForm()"
+            >
+              {{ isLoading ? "Please wait..." : "Submit General Profile" }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

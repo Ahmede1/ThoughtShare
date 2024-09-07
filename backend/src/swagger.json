@@ -1,0 +1,13 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Video Sharing Platform API",
+      "version": "1.0.0",
+      "description": "API documentation for the Video Sharing Platform"
+    },
+    "host": "localhost:5000",
+    "basePath": "/api",
+    "schemes": ["http"],
+    "paths": {}
+  }
+  

@@ -1,0 +1,82 @@
+<div *ngIf="isLoading">
+    <ngx-skeleton-loader count="1"
+        [theme]="{ 'height': '600px', 'width': '300px', 'margin': '15px', 'border-radius': '10px' }">
+    </ngx-skeleton-loader>
+</div>
+
+<div *ngIf="!isLoading">
+
+    <div class="d-flex justify-content-between">
+        <div>
+            <p class="title">{{this.statistics?.video.title}}</p>
+            <p>{{this.statistics?.video.description}}</p>
+        </div>
+        <mat-form-field class="theme-select" appearance="outline">
+            <mat-select value="Day" (selectionChange)="onPeriodChange($event)">
+                @for(period of periods; track period ) {
+                <mat-option [value]="period">
+                    {{ period }}
+                </mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <mat-card class="cardWithShadow m-t-24">
+        <mat-card-content>
+            <mat-card-title>Recent Transactions</mat-card-title>
+            <div class="timeline m-t-24 ">
+                @for(stat of statistics.stats; track stat.title) {
+                <div class="timeline-item d-flex">
+                    <div class="time text-right mat-subtitle-1 f-s-14">{{ stat._id }}</div>
+                    <div class="point d-flex align-items-center">
+                        <span class="timeline-badge border-primary m-y-8"></span>
+                        <span class="timline-border d-block"></span>
+                    </div>
+                    <div class="desc d-flex">
+                        <div class="play">
+                            <p class="cardDescription">Video Played <br> <strong
+                                    class="play-value">{{stat.videoStarted}}</strong>
+                                times</p>
+                        </div>
+                        <div class="watchtime">
+                            <p class="cardDescription">Video Reached <strong
+                                    class="watchtime-value">{{stat.watched25}}</strong>times</p>
+                            <span class="d-flex align-items-center">
+                                <span class="text-primary rounded f-w-600 p-2 f-s-12">25%</span>
+                                <mat-progress-bar mode="determinate" value="25" class="rounded"></mat-progress-bar>
+                            </span>
+                        </div>
+                        <div class="watchtime">
+                            <p class="cardDescription">Video Reached <strong
+                                    class="watchtime-value">{{stat.watched50}}</strong>times</p>
+                            <span class="d-flex align-items-center">
+                                <span class="text-primary rounded f-w-600 p-2 f-s-12">50%</span>
+                                <mat-progress-bar mode="determinate" value="50" class="rounded"></mat-progress-bar>
+                            </span>
+                        </div>
+                        <div class="watchtime">
+                            <p class="cardDescription">Video Reached <strong
+                                    class="watchtime-value">{{stat.watched75}}</strong>times</p>
+                            <span class="d-flex align-items-center">
+                                <span class="text-primary rounded f-w-600 p-2 f-s-12">75%</span>
+                                <mat-progress-bar mode="determinate" value="75" class="rounded"></mat-progress-bar>
+                            </span>
+                        </div>
+                        <div class="watchtime">
+                            <p class="cardDescription">Video Reached <strong
+                                    class="watchtime-value">{{stat.watched100}}</strong>times</p>
+                            <span class="d-flex align-items-center">
+                                <span class="text-primary rounded f-w-600 p-2 f-s-12">100%</span>
+                                <mat-progress-bar mode="determinate" value="100" class="rounded"></mat-progress-bar>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                }
+
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

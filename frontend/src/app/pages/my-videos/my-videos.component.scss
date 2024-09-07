@@ -1,0 +1,138 @@
+.card-container {
+    width: 100%;
+    /* Ensure the card container takes the full width */
+    margin-bottom: 16px;
+}
+
+.stars {
+    height: max-content;
+    width: max-content;
+}
+
+.material-icons,
+.menu-icon,
+.stars {
+    font-size: 16px;
+}
+
+.menu-option {
+    font-size: 12px;
+}
+
+.rating-card {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 16px;
+
+    .card-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    .product-image {
+        width: 25%;
+        height: auto;
+        margin-right: 16px;
+        border-radius: 15px;
+
+        @media (max-width: 600px) {
+            margin-right: 0;
+            margin-bottom: 16px;
+        }
+    }
+
+    .text-content {
+        flex-grow: 1;
+
+        h2 {
+            margin: 0 0 8px;
+        }
+
+        p {
+            margin: 0 0 16px;
+        }
+
+        .rating {
+            display: flex;
+
+            .mat-icon {
+                color: #ffb400;
+
+                &.filled {
+                    color: #ffb400;
+                }
+
+                &:not(.filled) {
+                    color: #e0e0e0;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        .product-image {
+            width: 100%;
+            border-radius: 15px;
+        }
+    }
+
+
+    .mat-icon-vert {
+        font-size: 20px;
+    }
+
+}
+
+
+
+.tags {
+    border: 1px solid rgb(171, 170, 170);
+    border-radius: 15px;
+    padding: 0px 10px;
+    font-size: 10px;
+}
+
+
+.fixed-image {
+    width: 100%;
+    object-fit: cover;
+    background-color: #f0f0f0;
+    /* fallback background color */
+}
+
+.title-small {
+    font-size: 0.8rem;
+    /* Adjust the size as needed */
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+
+/* Add this CSS to the component's stylesheet (parent-component.component.scss) */
+
+::ng-deep .mat-dialog-container {
+    width: 90%;
+    /* Default width */
+    max-width: 600px;
+    /* Maximum width */
+
+    /* Media query for larger screens */
+    @media (min-width: 768px) {
+        width: 50%;
+    }
+
+    /* Media query for even larger screens */
+    @media (max-width: 1024px) {
+        width: 40% !important;
+    }
+}

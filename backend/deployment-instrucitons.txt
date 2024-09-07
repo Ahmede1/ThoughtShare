@@ -1,0 +1,84 @@
+
+# Connect to VPS
+ssh root@185.187.75.186
+IP: 185.187.75.186
+Protocol: SSH (port 22)
+Username: root
+Password: fIB5Awk38KGp4L29vc
+
+
+apt-get update && apt-get upgrade -y
+apt-get install -y nodejs npm
+ mongodb
+( 
+sudo apt-get update
+sudo apt-get install -y docker.io
+sudo docker pull mongo:6.0
+sudo docker run -d -p 27017:27017 --name mongodb mongo:6.0
+sudo docker run -d -p 27017:27017 --name mongodb mongo:4.4
+sudo docker ps
+
+)
+sudo docker logs mongodb
+
+sudo docker stop mongodb
+sudo docker rm mongodb
+
+
+
+node -v
+npm -v
+mongod --version
+
+
+root@studee:~# sudo docker run --name mongodb -d mongo
+0bafa080189684851cf83a4c9f455c82ae376375298dd0ba41a932a4367a9c02
+
+
+
+sudo apt-get install screen
+screen -S NodeServer
+screen -S AngularServer
+
+Detach from the screen session without stopping the server:
+Press Ctrl + A, then D.
+
+screen -r NodeServer
+screen -r AngularServer
+screen -d -r NodeServer
+screen -d -r AngularServer
+
+Kill all screens
+str=$(screen -ls)  
+
+array=$(echo $str|tr "." "\n")  
+
+for V in $array  
+do  
+if [ $V -gt 0  ]  
+        then screen -S $V -X quit  
+fi  
+done"""
+
+ng serve --host 0.0.0.0 --port 4200 --base_url 185.187.75.186
+ng serve --host 0.0.0.0 --port 4200 --configuration production --disable-host-check
+
+sudo ss -tuln
+sudo lsof -i :5000
+sudo kill -9 103400
+
+
+
+ssh-keygen -t ed25519 -C "mashoodurrehmanofficial@gmail.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
+git remote set-url origin git@github.com:mashoodurrehmanofficial/ThoughtShare_Video_Sharing_Platform.git
+
+
+
+sudo apt update
+sudo apt install xfce4 xfce4-goodies tightvncserver
+vncserver
+vncserver -kill :1
+sudo netstat -tulpn | grep vnc

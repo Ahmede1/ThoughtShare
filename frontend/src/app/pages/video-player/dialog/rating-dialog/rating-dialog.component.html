@@ -1,0 +1,19 @@
+<div class="rating-dialog">
+    <p>{{'Rate this' | translate}}:</p>
+    <div class="stars">
+      <mat-icon 
+        *ngFor="let star of stars; let i = index"
+        (click)="setRating(i + 1)"
+        [ngClass]="{'selected': rating >= i + 1}">
+        star
+      </mat-icon>
+    </div>
+    <p>{{'Rating' | translate}}: {{rating}}/5</p>
+    <button mat-raised-button 
+            color="primary"
+            [disabled]="!rating" 
+            (click)="submitRating()">{{'Submit' | translate}}
+    </button>
+    <p *ngIf="!rating && showError" class="error-message">{{'Please select a rating before submitting' | translate}}.</p>
+  </div>
+  

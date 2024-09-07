@@ -1,0 +1,82 @@
+<h2 mat-dialog-title>{{ 'Confirm Upload' | translate }}</h2>
+<mat-dialog-content class="mat-typography">
+  <h3 class="mat-body-2 f-w-600 m-t-16">{{ 'Summary' | translate }}</h3>
+  <div class="summary-content">
+    <div class="summary-row">
+      <div class="summary-label"><strong>{{ 'Title' | translate }}:</strong></div>
+      <div class="summary-value">{{ data.title }}</div>
+    </div>
+    <div class="summary-row">
+      <div class="summary-label"><strong>{{ 'Language' | translate }}:</strong></div>
+      <div class="summary-value">{{ data.language }}</div>
+    </div>
+    <div class="summary-row">
+      <div class="summary-label"><strong>{{ 'Description' | translate }}:</strong></div>
+      <div class="summary-value">{{ data.description }}</div>
+    </div>
+    <div class="summary-row">
+      <div class="summary-label"><strong>{{ 'Thumbnail' | translate }}:</strong></div>
+      <div class="summary-value">
+        <img [src]="data.thumbnail" alt="{{ 'Thumbnail Preview' | translate }}" class="thumbnail-preview" />
+      </div>
+    </div>
+    <div class="summary-row">
+      <div class="summary-label"><strong>{{ 'Mandatory Tags' | translate }}:</strong></div>
+      <div class="summary-value">
+        <span *ngFor="let tag of data.mandatoryTags" class="tag">{{ tag }}</span>
+      </div> 
+    </div>
+    <div class="summary-row">
+      <div class="summary-label"><strong>{{ 'Optional Tags' | translate }}:</strong></div>
+      <div class="summary-value">
+        <span *ngFor="let tag of data.optionalTags" class="tag">{{ tag }}</span>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-stroked-button color="warn" mat-dialog-close>{{ 'Cancel' | translate }}</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>{{ 'Confirm Upload' | translate }}</button>
+</mat-dialog-actions>
+
+<style>
+  .summary-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 16px;
+  }
+
+  .summary-row {
+    display: contents;
+  }
+
+  .summary-label {
+    font-weight: bold;
+  }
+
+  .summary-value {
+    align-self: center;
+  }
+
+  .thumbnail-preview {
+    width: 70%;
+    border-radius: 15px;
+  }
+
+  .mat-dialog-actions {
+    padding: 8px 16px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    margin: 4px;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+  }
+</style>

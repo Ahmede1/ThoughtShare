@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "~@splidejs/splide/dist/css/splide.min.css";
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --border-color: #cccccc; // Light mode input text color
+
+  // Add variables for other UI elements as needed
+}
+
+.warning-color {
+  color: #fa896b;
+}
+#cdk-overlay-0{
+  right: 10% !important;
+}
+
+.borderNRadius {
+  border: 0.3px solid var(--border-color);
+  border-radius: 7px;
+}
+
+
+.mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-error-wrapper {
+  padding: 0px !important;
+  margin-bottom: 8px;
+}
+
+.mat-mat-mdc-form-field-subscript-wrapper,
+.mat-mdc-form-field-bottom-align-field {
+  align-items: start;
+}
+
+.dark-theme .mat-headline-5,
+.dark-theme .mat-subtitle-1,
+.dark-theme .mat-headline-6,
+.dark-theme .mat-button-toggle-button,
+.dark-theme .mat-drawer-container,
+.dark-theme .mdc-data-table__header-cell,
+.dark-theme .breadcrumb-item a {
+  color: #a1a1a1 !important;
+}

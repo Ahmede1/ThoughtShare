@@ -1,0 +1,23 @@
+<div *ngIf="isLoading">
+  <ngx-skeleton-loader count="3"
+    [theme]="{ 'height': '250px', 'width': '70', 'border-radius': '10px' }">
+  </ngx-skeleton-loader>
+</div>
+
+<div *ngIf="!isLoading">
+  <h1>{{'Top Videos'| translate}}</h1>
+  <div class="card-container" *ngFor="let video of trendingVideo">
+    <mat-card class="rating-card">
+      <div class="card-content" (click)="playVideo(video._id)">
+        <img [src]="video.imageUrl" alt="Product Image" class="product-image" />
+        <div class="text-content">
+          <h4>{{ video.title }}</h4>
+          <p>{{ video.description }}</p>
+          <div class="rating">
+            <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]" [ngClass]="{'filled': star <= video.rating}">star</mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

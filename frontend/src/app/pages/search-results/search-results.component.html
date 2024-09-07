@@ -1,0 +1,68 @@
+<ng-template #customHomePageContent>
+    <!-- Watch and search bar -->
+    <div *ngIf="this.dataHolderService.isLoggedIn" class="top-line-container">
+        <button mat-button class="watch-video-button">
+            <mat-icon>play_circle_filled</mat-icon> Watch Videos
+        </button>
+        <mat-form-field class="search-bar" appearance="outline">
+            <mat-label>Quick Search</mat-label>
+            <input matInput placeholder="Search videos..." [(ngModel)]="searchPhrase" (keydown.enter)="search()" />
+            <button mat-icon-button matSuffix (click)="openFilterDialog()">
+                <mat-icon>filter_list</mat-icon>
+            </button>
+            <button mat-icon-button matSuffix type="submit" (click)="search()">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div>
+        <div class="item" *ngIf="isLoading">
+            <ngx-skeleton-loader count="5"
+                [theme]="{ 'height': '300px', 'width': '250px', 'margin': '15px', 'border-radius': '10px' }">
+            </ngx-skeleton-loader>
+        </div>
+
+        <h2 *ngIf="this.dataHolderService.searchedVideos == null || this.dataHolderService.searchedVideos?.length==0">No
+            Videos found: {{this.searchPhrase}} </h2>
+        <div class="row">
+            <div class="col-md-4 col-lg-3" *ngFor="let video of this.dataHolderService.searchedVideos">
+                <mat-card
+                    class="cardWithShadow card2 position-relative card-hover cursor-pointer {{(video.isPremium && video.allowPremiumContent)?'premium':''}}"
+                    (click)="playVideo(video._id)">
+                    <img *ngIf="video.isPremium" height="35px" width="35px" class="premium-icon" style="position: absolute;z-index: 1;
+                        top: 10px;right: 10px;background: #fbf1e6;
+                        border-radius: 25px;padding: 3px;" src='/assets/icons/premium.png' />
+
+                    <img mat-card-image [src]=" this.sharedService.sanitizeNewsThumbnailUrl(video.thumbnail)"
+                        alt="{{ video.title }}" class="fixed-image"
+                        (error)="this.sharedService.handleImageError($event)" />
+                    <mat-card-content class="p-y-15">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <mat-card-title class="m-t-5 title-small">{{
+                                this.sharedService.truncateText(video.title,30)
+                                }}</mat-card-title>
+                        </div>
+                        <div class="tags-container m-t-10">
+                            <ng-container *ngFor="let tag of video.mandatoryTags.slice(0, 3)">
+                                <span class="tags">{{ this.sharedService.truncateTagName(tag.name) }}</span>
+                            </ng-container>
+                            <span *ngIf="video.mandatoryTags.length > 3" class="tags more-tags">+more</span>
+                        </div>
+
+                        <p>{{ this.sharedService.truncateText(video.description, 25) }}</p>
+                        <div class="rating">
+                            <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                                [color]="i < (video?.rating || 0) ? 'accent' : 'default'">
+                                star
+                            </mat-icon>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+
+</ng-template>
+
+<app-full [customContent]="customHomePageContent"></app-full>

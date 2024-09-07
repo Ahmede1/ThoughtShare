@@ -1,0 +1,159 @@
+<div class="upload-container container">
+    <form [formGroup]="uploadForm" (ngSubmit)="openHeaderDialog()">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{'Upload Video' | translate}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-12" *ngIf="uploadProgress > 0">
+                        <mat-progress-bar mode="determinate" [value]="uploadProgress"></mat-progress-bar>
+                        <span>{{ uploadProgress }}%</span>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <mat-form-field class="w-100 transparent-input">
+                            <mat-label>{{'Title' | translate}}</mat-label>
+                            <input matInput formControlName="title" />
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <mat-form-field appearance="fill" class="w-100 transparent-input">
+                            <mat-label>{{'Language' | translate}}</mat-label>
+                            <mat-select formControlName="language">
+                                <mat-option *ngFor="let option of LanguageOptions" [value]="option">{{ option
+                                    }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-md-6 mandatory-tags-section">
+                        <h5>{{'Mandatory Tags' | translate}}</h5>
+                        <div class="row">
+                            <div class="col-4">
+                              <mat-form-field appearance="fill" class="w-100 transparent-input">
+                                <mat-label>{{'Year' | translate}}</mat-label>
+                                <mat-select formControlName="YearOptionsMendatory" (selectionChange)="updateMandatoryTags($event.value)">
+                                  <mat-option *ngFor="let option of YearOptionsMendatoryList" [value]="option">{{ option.name }}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-4">
+                              <mat-form-field appearance="fill" class="w-100 transparent-input">
+                                <mat-label>{{'Subject Area' | translate}}</mat-label>
+                                <mat-select formControlName="subjectAreaMendatory" (selectionChange)="onSubjectAreaChange($event)">
+                                  <mat-option *ngFor="let option of subjectAreaMendatoryList" [value]="option">{{ option.name }}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-4">
+                              <mat-form-field appearance="fill" class="w-100 transparent-input">
+                                <mat-label>{{'Branch' | translate}}</mat-label>
+                                <mat-select formControlName="branchMendatory" (selectionChange)="onBranchChange($event)">
+                                  <mat-option *ngFor="let option of branchMendatoryList" [value]="option">{{ option.name }}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-4">
+                              <mat-form-field appearance="fill" class="w-100 transparent-input">
+                                <mat-label>{{'Topic' | translate}}</mat-label>
+                                <mat-select formControlName="topicMendatory" (selectionChange)="onTopicChange($event)">
+                                  <mat-option *ngFor="let option of topicMendatoryList" [value]="option">{{ option.name }}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-4">
+                              <mat-form-field appearance="fill" class="w-100 transparent-input">
+                                <mat-label>{{'Subtopic' | translate}}</mat-label>
+                                <mat-select formControlName="subtopicMendatory" (selectionChange)="onSubtopicChange($event)">
+                                  <mat-option *ngFor="let option of subtopicMendatoryList" [value]="option">{{ option.name }}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-4">
+                              <mat-form-field appearance="fill" class="w-100 transparent-input">
+                                <mat-label>{{'Concept' | translate}}</mat-label>
+                                <mat-select formControlName="conceptMendatory" (selectionChange)="updateMandatoryTags($event.value)">
+                                  <mat-option *ngFor="let option of conceptMendatoryList" [value]="option">{{ option.name }}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          
+                    </div>
+
+                    <div class="col-12 col-md-6 optional-tags-section">
+                        <h5>{{'Optional Tags' | translate}}</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <mat-form-field appearance="fill" class="w-100 transparent-input">
+                                    <mat-label>{{'Difficulty Level' | translate}}</mat-label>
+                                    <mat-select formControlName="difficultyLevelOptional"
+                                        (selectionChange)="updateOptionalTags($event.value)">
+                                        <mat-option *ngFor="let option of difficultyLevelOptionalList"
+                                            [value]="option">{{ option.name }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-4">
+                                <mat-form-field appearance="fill" class="w-100 transparent-input">
+                                    <mat-label>{{'Interactivity' | translate}}</mat-label>
+                                    <mat-select formControlName="interactivityOptional"
+                                        (selectionChange)="updateOptionalTags($event.value)">
+                                        <mat-option *ngFor="let option of interactivityOptionalList" [value]="option">{{
+                                            option.name }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-4">
+                                <mat-form-field appearance="fill" class="w-100 transparent-input">
+                                    <mat-label>{{'Resource Type' | translate}}</mat-label>
+                                    <mat-select formControlName="resourceTypeOptional"
+                                        (selectionChange)="updateOptionalTags($event.value)">
+                                        <mat-option *ngFor="let option of resourceTypeOptionalList" [value]="option">{{
+                                            option.name }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12">
+                        <mat-form-field appearance="fill" class="w-100 transparent-input">
+                            <mat-label>{{'Description' | translate}}</mat-label>
+                            <textarea matInput formControlName="description"></textarea>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="thumbnail">{{'Thumbnail' | translate}}</label>
+                        <input type="file" id="thumbnail" (change)="onThumbnailChange($event)"
+                            class="form-control-file custom-file-input" />
+                        <div *ngIf="thumbnailPreview" class="mt-2">
+                            <img [src]="thumbnailPreview" alt="Thumbnail Preview"
+                                class="thumbnail-preview img-fluid rounded-border" />
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="video">{{'Video' | translate}}</label>
+                        <input type="file" id="video" (change)="onVideoChange($event)"
+                            class="form-control-file custom-file-input" />
+                        <div *ngIf="videoPreview" class="mt-2">
+                            <video [src]="videoPreview" controls class="video-preview img-fluid rounded-border"></video>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" [disabled]="isUploading" type="submit" color="primary">
+                    {{this.isUploading?"Uplaoding":"Upload" | translate}}
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>
+<video #videoElement style="display: none;"></video>
+<canvas #canvasElement style="display: none;"></canvas>

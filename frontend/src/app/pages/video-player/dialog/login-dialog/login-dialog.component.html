@@ -1,0 +1,11 @@
+<h2 class="f-w-500 m-b-10" mat-dialog-title><strong>{{'Login' | translate}}</strong></h2>
+
+<div class="p-x-24">
+    <p>{{'Looks Like you are not Logged in' |  translate}}<span class="f-w-600"></span> ?</p>
+</div>
+<div mat-dialog-actions class="p-x-24 p-b-24">
+    <button mat-button (click)="doAction()" mat-flat-button color="primary">
+        {{'Login'| translate}}
+    </button>
+    <button mat-button (click)="closeDialog()" class="m-l-8">{{'Cancel'|  translate}}</button>
+</div>

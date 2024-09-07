@@ -1,0 +1,125 @@
+<div class="item" *ngIf="isLoading">
+    <ngx-skeleton-loader count="5"
+        [theme]="{ 'height': '300px', 'width': '250px', 'margin': '15px', 'border-radius': '10px' }">
+    </ngx-skeleton-loader>
+</div>
+<div *ngIf="!isLoading">
+    <div *ngIf="this.dataHolderService.myVideos.length ==0">No Videos to show</div>
+    <div class="row">
+        <div class="col-md-4 col-lg-3" *ngFor="let video of this.dataHolderService.myVideos">
+            <mat-card class="cardWithShadow card2 position-relative card-hover cursor-pointer"
+                (click)="playVideo(video._id)">
+                <img mat-card-image [src]="this.sharedService.sanitizeNewsThumbnailUrl(video.thumbnail)"
+                    alt="{{ video.title }}" class="fixed-image" (error)="this.sharedService.handleImageError($event)" />
+
+                <mat-card-content class="p-y-15">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <mat-card-title class="m-t-5 title-small">{{ this.sharedService.truncateText(video.title, 30)
+                            }}</mat-card-title>
+                        <div style="width: 25px;" (click)="$event.stopPropagation()">
+                            <button mat-icon-button [matMenuTriggerFor]=" menu" aria-label="More options">
+                                <mat-icon class="menu-icon">more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu" class="cardWithShadow">
+                                <button mat-menu-item *ngIf="!video.deletionRequested"
+                                    (click)="openDeleteDialog(video._id)">
+                                    <mat-icon class="menu-icon">delete</mat-icon>
+                                    <span class="menu-option">{{'Request For Delete' | translate}}</span>
+                                </button>
+                                <button mat-menu-item (click)="showStatistics(video._id)">
+                                    <mat-icon class="menu-icon">show_chart</mat-icon>
+                                    <span class="menu-option">{{'Statistics' | translate}}</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                    <div class="tags-container m-t-5">
+                        <ng-container *ngFor="let tag of video.mandatoryTags.slice(0, 3)">
+                            <span class="tags">{{ this.sharedService.truncateTagName(tag.name) }}</span>
+                        </ng-container>
+                        <span *ngIf="video.mandatoryTags.length > 3" class="tags more-tags">+more</span>
+                    </div>
+
+                    <p class="title-small">{{ this.sharedService.truncateText(video.description, 25) }}</p>
+                    <div class="d-flex justify-content-between">
+                        <div class="rating">
+                            <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" class="stars"
+                                [color]="i < (video?.rating || 0) ? 'accent' : 'default'">
+                                star
+                            </mat-icon>
+                        </div>
+                        <span *ngIf="video.deletionRequested" class="warning-color" matTooltip="Requested for Delete">
+                            <i class="material-icons">auto_delete</i>
+                        </span>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div *ngIf="this.videos==null">No Videos to show</div>
+<div class="row">
+    <div class=" col-md-4 col-lg-3" *ngFor="let video of videos">
+        <mat-card class="cardWithShadow card2 position-relative card-hover cursor-pointer">
+            <img mat-card-image [src]="this.sharedService.sanitizeNewsThumbnailUrl(video.thumbnail)" alt="Thumbnail of video" />
+
+            <mat-card-content class="p-y-15">
+                <mat-card-title class="m-t-5">{{ video.title }}</mat-card-title>
+                <div class="m-t-10 ">
+                    <ng-container *ngFor="let tag of video.mandatoryTags">
+                        <span class="tags">{{ tag.name }}</span>
+                    </ng-container>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div> -->
+
+
+<!-- <div class="card-container" *ngFor="let video of videos">
+    <mat-card class="rating-card">
+        <div class="card-content">
+            <img [src]="video.imageUrl" alt="Product Image" class="product-image" />
+            <div class="text-content">
+                <div class="d-flex justify-content-between align-items-end">
+                    <h2>{{ video.title }}</h2>
+                    <div *ngIf="!video.deletionRequested">
+                        <button mat-icon-button [matMenuTriggerFor]="menu">
+                            <mat-icon class="mat-icon-vert">more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu" class="cardWithShadow">
+                            <button mat-menu-item (click)="openDeleteDialog(video._id)">
+                                <mat-icon class="mat-icon-delete">delete</mat-icon>
+                                <span style="font-size: 12px;">Request For Delete</span>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </div>
+                <p>{{ video.description }}</p>
+                <ng-container *ngFor="let tag of mandatoryTags">
+                    <span class="tags">{{ tag }}</span>
+                </ng-container>
+                <div class="d-flex justify-content-between">
+                    <div class="rating">
+                        <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]"
+                            [ngClass]="{'filled': star <= video.rating}">star</mat-icon>
+                    </div>
+                    <span *ngIf="video.deletionRequested" class="warning-color" style="font-size: 12px;">Requested For
+                        Delete</span>
+
+                </div>
+
+            </div>
+        </div>
+    </mat-card>
+</div> -->

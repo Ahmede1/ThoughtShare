@@ -1,0 +1,91 @@
+<mat-card class="mat-card-top notes-app cardWithShadow">
+  <mat-sidenav-container
+    [ngClass]="{
+      'side-panel-opened': sidePanelOpened,
+      'side-panel-closed': !sidePanelOpened
+    }"
+    class="h-100"
+  >
+    <mat-card-content class="p-24">
+      <form [formGroup]="noteForm" (ngSubmit)="submitForm()">
+        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+          >{{ 'Title' | translate }}</mat-label
+        >
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput formControlName="title" />
+          <mat-error
+            *ngIf="
+              noteForm.get('title')?.touched &&
+              noteForm.get('title')?.hasError('required')
+            "
+          >
+            {{ 'Title is required.' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-label class="mat-subtitle-2 f-w-600 m-b-8 d-block"
+          >{{ 'Content' | translate }}</mat-label
+        >
+        <ckeditor [editor]="Editor" formControlName="content"></ckeditor>
+        <mat-error
+          *ngIf="
+            noteForm.get('content')?.touched &&
+            noteForm.get('content')?.hasError('required')
+          "
+        >
+          {{ 'Content is required.' | translate }}
+        </mat-error>
+
+        <mat-label class="mat-subtitle-2 f-w-600 m-y-20 d-block"
+          >{{ 'Thumbnail' | translate }}</mat-label
+        >
+        <input
+          type="file"
+          (change)="onFileSelected($event)"
+          hidden
+          #fileInput
+        />
+        <button
+          mat-flat-button
+          color="primary"
+          class="m-r-8"
+          (click)="fileInput.click()"
+        >
+          {{ 'Upload' | translate }}
+        </button>
+        <button mat-stroked-button color="warn" (click)="resetImage()">
+          {{ 'Reset' | translate }}
+        </button>
+        <div>
+          <img
+            *ngIf="profileImageUrl"
+            [src]="profileImageUrl"
+            class="thumbnail-preview m-y-15"
+          />
+        </div>
+        <mat-error
+          *ngIf="
+            noteForm.get('thumbnail')?.touched &&
+            noteForm.get('thumbnail')?.hasError('required')
+          "
+        >
+          {{ 'Thumbnail is required.' | translate }}
+        </mat-error>
+
+        <div class="text-right p-24 p-t-0">
+          <button
+            mat-flat-button
+            color="primary"
+            type="submit"
+            [disabled]="!this.noteForm.valid"
+          >
+            {{ 'Save' | translate }}
+          </button>
+          <button mat-stroked-button color="warn" type="button" class="m-x-10">
+            {{ 'Cancel' | translate }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-sidenav-container>
+</mat-card>

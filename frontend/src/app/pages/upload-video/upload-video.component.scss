@@ -1,0 +1,86 @@
+.upload-container {
+    .thumbnail-preview,
+    .video-preview {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+  
+    .form-control-file {
+      display: block;
+      width: 100%;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #495057;
+      background-color: transparent;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+    }
+  
+    .custom-file-input {
+      &::-webkit-file-upload-button {
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: transparent;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        cursor: pointer;
+      }
+    }
+  
+    .mat-form-field {
+      position: relative;
+      background-color: transparent;
+    }
+  
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+      background-color: transparent;
+    }
+  
+    .transparent-input .mat-form-field-wrapper .mat-form-field-flex {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  
+    .transparent-input .mat-form-field-wrapper .mat-form-field-underline::before {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+  
+    .transparent-input .mat-form-field-wrapper .mat-form-field-underline::after {
+      border-bottom: 2px solid #3f51b5;
+    }
+  
+    .transparent-input .mat-form-field-wrapper .mat-form-field-ripple {
+      background-color: #3f51b5;
+    }
+  
+    .upload-button {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: 16px;
+      cursor: pointer;
+      background-color: #3f51b5;
+      color: white;
+      padding: 8px 0;
+      border-radius: 4px;
+    }
+  
+    .mandatory-tags-section,
+    .optional-tags-section {
+      padding: 16px;
+      margin-bottom: 16px;
+  
+      h5 {
+        margin-bottom: 16px;
+      }
+  
+      .mat-form-field {
+        width: 100%;
+      }
+    }
+  
+  }
+  

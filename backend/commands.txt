@@ -1,0 +1,66 @@
+npm install config
+
+
+Start the Server in Development Mode:
+npm run dev
+
+Start the Server in Production Mode: 
+npm start
+
+npm run swagger-autogen
+
+lt --port 5000
+39.45.181.23
+
+
+git checkout main
+git pull origin main
+git checkout -b backend
+git checkout backend
+git push origin backend
+
+
+git commit -m ""
+git add .
+git commit -m "Implement backend feature"
+git push origin backend
+
+git add .
+git commit -m "Implement frontend feature"
+git push origin frontend
+
+
+Step 4: Create Pull Requests to Merge into Main
+Create Pull Request for Backend Branch:
+
+On GitHub, navigate to the repository.
+Click on the "Pull requests" tab.
+Click the "New pull request" button.
+Select backend as the source branch and main as the target branch.
+Click "Create pull request".
+Add a title and description, then click "Create pull request".
+Create Pull Request for Frontend Branch:
+
+On GitHub, navigate to the repository.
+Click on the "Pull requests" tab.
+Click the "New pull request" button.
+Select frontend as the source branch and main as the target branch.
+Click "Create pull request".
+Add a title and description, then click "Create pull request".
+Step 5: Review and Merge Pull Requests
+Review Pull Requests:
+
+Review the changes in each pull request.
+Make any necessary comments or request changes.
+Merge Pull Requests:
+
+Once the pull requests are approved, click the "Merge pull request" button for each one.
+Confirm the merge.
+Pull the Latest Changes on Both Machines:
+
+On both machines, switch to the main branch and pull the latest changes.
+
+git checkout main
+git pull origin main
+
+

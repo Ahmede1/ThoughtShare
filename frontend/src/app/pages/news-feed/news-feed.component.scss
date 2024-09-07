@@ -1,0 +1,125 @@
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-content {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  flex: 0 0 25%; // Show 4 items on large screens
+  box-sizing: border-box;
+  padding: 10px;
+  height: 300px;
+  max-width: 100%;
+}
+
+mat-card {
+  height: 100%;
+  width: 100%;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+mat-card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+}
+
+.news-thumbnail {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.read-more-button {
+  background: transparent;
+  color: primary;
+  &:hover {
+    background: primary;
+    color: white;
+  }
+}
+.nav-button {
+  background: rgb(255, 255, 255);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  margin: 5px;
+  cursor: pointer;
+  position: absolute;
+  box-shadow: 0px 0px 4px 5px #95959580;
+
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+
+  &.left {
+    left: 0;
+  }
+
+  &.right {
+    right: 0;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  i-tabler {
+    font-size: 2rem;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .carousel-item {
+    flex: 0 0 50%; // Show 2 items on medium screens
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    flex: 0 0 50%; // Show 2 items on smaller screens
+  }
+}
+
+@media (max-width: 700px) {
+  .carousel-item {
+    flex: 0 0 100%; // Show 1 item on small screens
+  }
+}
+
+@media (max-width: 413px) {
+  .carousel-item {
+    flex: 0 0 100%; // Show 1 item on very small screens
+  }
+}
+
+mat-card-content {
+  display: flex;
+}
+
+mat-card-content img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}

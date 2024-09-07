@@ -1,0 +1,90 @@
+
+
+https://chatgpt.com/c/e2eb9e0e-72fe-48d6-91fd-d45e69307196
+
+https://www.dropbox.com/scl/fo/z4lrabgy7ja8g6g8bcz48/AOVOmxWFFH-SWqW9OmBWfmc?dl=0&e=1&preview=FLST+-+v2024.07.28.docx&rlkey=8hj9wam5lxs7i3623umtzblfn
+
+
+https://www.dropbox.com/scl/fo/z4lrabgy7ja8g6g8bcz48/AOVOmxWFFH-SWqW9OmBWfmc?rlkey=8hj9wam5lxs7i3623umtzblfn&e=1&dl=0
+
+
+
+Instructions
+
+Dear {Logged-in User)!
+In order to serve you better, please stick to the below template, so we can help with your request. Please ask for the addition of new category names only if your video topic does not fit into any of the already defined ones.
+Thank you for your cooperation!
+
+Request Template
+
+Dear Customer Support!
+
+I would like to create a video that does not fit into the current list of selectable topics. Please make it possible by adding the following descriptors:
+Subject Area:
+Branch:
+Topic:
+Subtopic:
+Concept:
+
+Difficulty Level:
+Interactivity:
+Resource Type:
+
+* Please mark with NEW the lines for which you are requesting a new category.
+
+Thank you,
+{Loggen-in User}
+5:47 PM
+Instructions
+
+Lieber {Logged-in User},
+
+Um Ihnen besser dienen zu können, halten Sie sich bitte an die unten stehende Vorlage, damit wir Ihnen bei Ihrer Anfrage helfen können. Bitte fordern Sie nur die Hinzufügung neuer Kategorienamen an, wenn Ihr Videothema in keine der bereits definierten Kategorien passt.
+Vielen Dank für Ihre Mitarbeit!
+
+Request Template
+
+Lieber Kundenservice,
+
+Ich möchte ein Video erstellen, das nicht in die aktuelle Liste der auswählbaren Themen passt. Bitte machen Sie es möglich, indem Sie die folgenden Beschreibungen hinzufügen:
+Fachgebiet:
+Zweig:
+Thema:
+Unterthema:
+Konzept:
+
+Schwierigkeitsgrad:
+Interaktivität:
+Ressourcentyp:
+
+Bitte markieren Sie mit NEU die Zeilen, für die Sie eine neue Kategorie anfordern.
+Vielen Dank,
+{Logged-in User}
+5:48 PM
+Instructions
+
+Cher {Logged-in User},
+
+Afin de mieux vous servir, veuillez suivre le modèle ci-dessous, afin que nous puissions vous aider dans votre demande. Veuillez demander l'ajout de nouveaux noms de catégories uniquement si le sujet de votre vidéo ne correspond à aucun des thèmes déjà définis.
+Merci de votre coopération !
+
+Request Template
+
+Cher Support Client,
+
+Je voudrais créer une vidéo qui ne correspond pas à la liste actuelle des sujets sélectionnables. Veuillez le rendre possible en ajoutant les descripteurs suivants :
+Domaine:
+Branche:
+Sujet:
+Sous-sujet:
+Concept:
+
+Niveau de difficulté:
+Interactivité:
+Type de ressource:
+
+Veuillez marquer avec NOUVEAU les lignes pour lesquelles vous demandez une nouvelle catégorie.
+Merci,
+{Logged-in User}
+5:50 PM
+Mashood, please find here the English, German and French version of the form filling instructions and the request template.

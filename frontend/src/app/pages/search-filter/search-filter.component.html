@@ -1,0 +1,150 @@
+<div class=" d-flex main">
+    <div>
+
+        <h2 class="mat-title">{{ 'Filter' | translate }}</h2>
+        <mat-form-field class="custom-form-field" appearance="fill">
+            <mat-label>{{ 'Subject Area' | translate }}</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoSubjectArea" [(ngModel)]="selectedSubjectArea"
+                (click)="showDropdowns('subjectArea')" (input)="filterOptions('subjectArea')"
+                placeholder="{{ 'Search subject...' | translate }}" />
+            <mat-autocomplete #autoSubjectArea="matAutocomplete" (optionSelected)="onSubjectAreaChange($event)">
+                <mat-option *ngFor="let option of filteredSubjectAreas" [value]="option">
+                    {{ option.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="custom-form-field">
+            <mat-label>{{ 'Branch' | translate }}</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoBranch" [(ngModel)]="selectedBranch"
+                (click)="showDropdowns('branch')" (input)="filterOptions('branch')"
+                placeholder="{{ 'Search branch...' | translate }}" />
+            <mat-autocomplete #autoBranch="matAutocomplete" (optionSelected)="onBranchChange($event)">
+                <mat-option *ngFor="let option of filteredBranches" [value]="option">
+                    {{ option.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="custom-form-field">
+            <mat-label>{{ 'Topic' | translate }}</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoTopic" [(ngModel)]="selectedTopic"
+                (click)="showDropdowns('topics')" (input)="filterOptions('topic')"
+                placeholder="{{ 'Search topic...' | translate }}" />
+            <mat-autocomplete #autoTopic="matAutocomplete" (optionSelected)="onTopicChange($event)">
+                <mat-option *ngFor="let option of filteredTopics" [value]="option">
+                    {{ option.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="custom-form-field">
+            <mat-label>{{ 'Subtopic' | translate }}</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoSubtopic" [(ngModel)]="selectedSubtopic"
+                (click)="showDropdowns('subtopic')" (input)="filterOptions('subtopic')"
+                placeholder="{{ 'Search subtopic...' | translate }}" />
+            <mat-autocomplete #autoSubtopic="matAutocomplete" (optionSelected)="onSubtopicChange($event)">
+                <mat-option *ngFor="let option of filteredSubtopics" [value]="option">
+                    {{ option.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <!-- For Concept -->
+        <mat-form-field class="custom-form-field">
+            <mat-label>{{ 'Concept' | translate }}</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoConcept" [(ngModel)]="selectedConcept"
+                (click)="showDropdowns('concept')" (input)="filterOptions('concept')"
+                placeholder="{{ 'Search concept...' | translate }}" />
+            <mat-autocomplete #autoConcept="matAutocomplete" (optionSelected)="onConceptChange($event)">
+                <mat-option *ngFor="let option of filteredConcepts" [value]="option">
+                    {{ option.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="custom-form-field" appearance="fill">
+            <mat-label>{{ 'Language' | translate }}</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoLanguage" [(ngModel)]="selectedLanguage"
+                (click)="showDropdowns('language')" (input)="filterOptions('language')"
+                placeholder="{{ 'Search language...' | translate }}" />
+            <mat-autocomplete #autoLanguage="matAutocomplete">
+                <mat-option *ngFor="let option of filteredLanguageOptions" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="custom-form-field" appearance="fill">
+            <mat-label>{{ 'Year' | translate }}</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoYear" [(ngModel)]="selectedYear"
+                (click)="showDropdowns('year')" (input)="filterOptions('year')"
+                placeholder="{{ 'Search year...' | translate }}" />
+            <mat-autocomplete #autoYear="matAutocomplete">
+                <mat-option *ngFor="let year of filteredYearOptions" [value]="year">
+                    {{ year }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="custom-form-field" appearance="fill">
+            <mat-label>{{ 'Difficulty Level' | translate }}</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoDifficultyLevel" [(ngModel)]="selectedDifficultyLevel"
+                (focus)="showDropdowns('difficultyLevel')" (input)="filterOptions('difficultyLevel')"
+                placeholder="{{ 'Search difficulty level...' | translate }}" />
+            <mat-autocomplete #autoDifficultyLevel="matAutocomplete">
+                <mat-option *ngFor="let option of filteredDifficultyLevels" [value]="option.name">
+                    {{ option.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="custom-form-field" appearance="fill">
+            <mat-label>{{ 'Interactivity' | translate }}</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoInteractivity" [(ngModel)]="selectedInteractivity"
+                (focus)="showDropdowns('interactivity')" (input)="filterOptions('interactivity')"
+                placeholder="{{ 'Search interactivity...' | translate }}" />
+            <mat-autocomplete #autoInteractivity="matAutocomplete">
+                <mat-option *ngFor="let option of filteredInteractivities" [value]="option.name">
+                    {{ option.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="custom-form-field" appearance="fill">
+            <mat-label>{{ 'Resource Type' | translate }}</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoResourceType" [(ngModel)]="selectedResourceType"
+                (focus)="showDropdowns('resourceType')" (input)="filterOptions('resourceType')"
+                placeholder="{{ 'Search resource type...' | translate }}" />
+            <mat-autocomplete #autoResourceType="matAutocomplete">
+                <mat-option *ngFor="let option of filteredResourceTypes" [value]="option.name">
+                    {{ option.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+
+        <mat-form-field class="custom-form-field" appearance="fill">
+            <mat-label>{{ 'Select Authors' | translate }}</mat-label>
+            <input type="text" matInput [matAutocomplete]="autoAuthor" [(ngModel)]="searchTerm"
+                (focus)="showDropdowns('authorList')" (input)="filterOptions('authorList')"
+                placeholder="{{ 'Search authors...' | translate }}" />
+            <mat-autocomplete #autoAuthor="matAutocomplete" class="custom-autocomplete">
+                <mat-option *ngFor="let author of filteredAuthors" [value]="author.name" class="custom-option"
+                    (click)="toggleAuthorSelection(author._id, { checked: !author.isSelected })">
+                    <div class="author-container d-flex">
+                        <mat-checkbox [checked]="author.isSelected" class="custom-checkbox">
+                            <span class="authorname">{{ author.screenName }}</span>
+                        </mat-checkbox>
+                    </div>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="p-x-24 p-b-10 " align="end">
+        <button mat-button (click)="ApplyFilter()" class="m-l-8" mat-flat-button color="primary">{{ 'Ok' | translate
+            }}</button>
+        <button mat-button (click)="closeDialog()">{{ 'Cancel' | translate }}</button>
+    </div>
+</div>

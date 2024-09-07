@@ -1,0 +1,5 @@
+{
+    "DB_URI": "mongodb://mongodb:27017/Video_Sharing_Platform",
+    "BASE_URL": "https://studee.fun",
+    "ANGULAR_SERVER_HOST":"https://studee.fun"
+}

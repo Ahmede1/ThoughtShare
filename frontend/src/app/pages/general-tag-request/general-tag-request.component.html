@@ -1,0 +1,27 @@
+<ng-template #customHomePageContent>
+    <h3>{{ 'General Tag Request Form' | translate }}</h3>
+    <form [formGroup]="emailForm" (ngSubmit)="onSubmit()" class="w-100">
+        <mat-form-field appearance="fill" class="w-100 m-y-10">
+            <mat-label>{{ 'Email' | translate }}</mat-label>
+            <input matInput type="email" formControlName="email" required>
+        </mat-form-field>
+        <!-- <div class="formatted-text" [innerHTML]="this.instructionsText"></div> -->
+        <div class="formatted-text">
+            <p>{{'Dear'| translate}} {{this.dataHolderService.user.screenName}}!</p>
+            <p>{{'In order to serve you better, please stick to the below template, so we can help with your request. Please ask for the addition of new category names only if your video topic does not fit into any of the already defined ones' | translate}}.</p>
+            <p>{{'Thank you for your cooperation!' | translate}}</p>
+        </div>
+
+        <mat-form-field appearance="fill" class="w-100 m-y-10" style="height: auto;">
+            <mat-label>{{ 'Description' | translate }}</mat-label>
+            <textarea [rows]="18" matInput [(ngModel)]="this.placeholder" formControlName="description"
+                required></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="emailForm.invalid || isSending">
+            {{ isSending ? ('Sending Request...' | translate) : ('Submit' | translate) }}
+        </button>
+    </form>
+</ng-template>
+
+<app-full [customContent]="customHomePageContent"></app-full>

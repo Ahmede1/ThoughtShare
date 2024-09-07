@@ -1,0 +1,221 @@
+<ng-template #customHomePageContent>
+    <!-- Watch and search bar -->
+    <!-- <div *ngIf="this.dataHolderService.isLoggedIn" class="top-line-container">
+        <button mat-button class="watch-video-button">
+            <mat-icon>play_circle_filled</mat-icon> Watch Videos
+        </button>
+        <mat-form-field class="search-bar" appearance="outline">
+            <mat-label>Quick Search</mat-label>
+            <input matInput placeholder="Search videos..." [(ngModel)]="searchPhrase" (keydown.enter)="search()" />
+            <button mat-icon-button matSuffix (click)="openFilterDialog()">
+                <mat-icon>filter_list</mat-icon>
+            </button>
+            <button mat-icon-button matSuffix type="submit" (click)="search()">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+    </div> -->
+
+    <div *ngIf="isLoading">
+        <ngx-skeleton-loader count="1" [theme]="{ 'height': '450px', 'width': '75%',  'border-radius': '10px' }">
+        </ngx-skeleton-loader>
+        <ngx-skeleton-loader count="1"
+            [theme]="{ 'height': '450px', 'width': '20%',  'border-radius': '10px','margin-left':'15px' }">
+        </ngx-skeleton-loader>
+    </div>
+
+    <div *ngIf="!isLoading">
+        <div class="video-details-container">
+            <mat-card class="video-card">
+                <mat-card-header class="matHeader">
+                    <mat-card-title>{{ video?.title }}</mat-card-title>
+                    <div class="position-relative">
+                        <button mat-icon-button [matMenuTriggerFor]="videoOptions" aria-label="More options">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #videoOptions="matMenu" class="cardWithShadow">
+                            <button mat-menu-item (click)="openReportDialog()">
+                                <mat-icon>flag</mat-icon>
+                                <span>{{'Report' | translate}}</span>
+                            </button>
+                        </mat-menu>
+                    </div>
+
+                </mat-card-header>
+
+                <mat-card-content>
+                    <div class="tags-container">
+                        <ng-container *ngFor="let tag of video?.mandatoryTags; let i = index">
+                            <ng-container *ngIf="i < 3">
+                                <span class="tag">{{ tag.name }}</span>
+                            </ng-container>
+                        </ng-container>
+
+
+                    </div>
+                    <div class="video-n-details">
+                        <video #videoPlayer class="video-player" controls [src]="this.video?.video"></video>
+
+                        <div class="video-info">
+                            <div class="creator-info w-100">
+                                <h3>{{'Author' | translate }}</h3>
+                                <span class="create-n-follow d-flex justify-content-between align-items-center">
+                                    <p class="autorName">{{ video?.creator?.screenName }}</p>
+                                    <button mat-flat-button color="accent" (click)="toggleFollow()">
+                                        <span>{{ this.video?.isFollowingAuthor ? 'Following' : 'Follow' }}</span>
+                                        <mat-icon *ngIf="this.video?.isFollowingAuthor">check</mat-icon>
+                                    </button>
+                                </span>
+                            </div>
+                            <div class="ratings d-flex flex-column">
+                                <h3>{{'Video rating' | translate}}</h3>
+                                <div class="d-flex flex-column">
+                                    <div>
+                                        <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                                        [ngClass]="{'filled': star <= video?.rating}">
+                                            star
+                                        </mat-icon>
+                                    </div>
+
+                                    <!-- <span>(26)</span> -->
+                                </div>
+                            </div>
+                            <div class="rank-info d-flex justify-content-between align-items-center gap-10">
+                                <!-- <h3>Rank #32</h3> -->
+                                <div class=" thumb-icons d-flex gap-15 ">
+                                    <span class=" borderNRadius vote-icon" (click)="updateVoting('upvote')">
+                                        <mat-icon
+                                            color="{{this.video?.voteStatus==='upvote'?'accent':''}}">thumb_up</mat-icon>
+                                        <span>{{this.video?.totalUpVotes}}</span>
+                                    </span>
+                                    <span class="borderNRadius vote-icon" (click)="updateVoting('downvote')">
+                                        <mat-icon
+                                            color="{{this.video?.voteStatus==='downvote'?'accent':''}}">thumb_down</mat-icon>
+                                        <span>{{this.video?.totalDownVotes}}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <mat-card class="cardWithShadow">
+            <mat-card-content class="p-24">
+                <mat-card-title class="m-b-24 f-s-21">{{'Post Comments ' | translate}}</mat-card-title>
+                <form>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <textarea matInput [(ngModel)]="userInputReview" name='review' rows="3"></textarea>
+                    </mat-form-field>
+                    <button mat-flat-button color="primary"
+                        (click)="askForRating()">{{isPostingReview?'Posting':'Post' | translate}}</button>
+                </form>
+
+                <mat-card-title class="m-t-30 f-s-21 p-t-24">{{'Comments' | translate}}
+                    <span
+                        class="text-primary p-x-12 p-y-8 rounded bg-light-primary f-w-600 m-l-8 f-s-18">{{this.allReviews?.length}}</span></mat-card-title>
+                <div *ngIf="areReviewsLoading" class="m-t-20">
+                    <ngx-skeleton-loader count="2"
+                        [theme]="{ 'height': '100px', 'width': '100%',  'border-radius': '10px' }">
+                    </ngx-skeleton-loader>
+                </div>
+
+
+                <div *ngIf="!areReviewsLoading">
+                    <!-- comment -->
+                    <div *ngFor="let review of allReviews" class="bg-light rounded p-24 m-t-24">
+                        <div class="d-flex justify-content-between align-items-center w-100">
+                            <div class="d-flex align-items-center">
+                                <img [src]="review.user.profilePicture || '/assets/images/profile/.jpg'" alt="user"
+                                    width="35" class="rounded-circle" />
+                                <span class="mat-body-5 f-w-600 m-l-12">{{review.user.screenName}}</span>
+                                <span class="m-l-12 f-s-12 d-flex align-items-center">
+                                    <i-tabler class="icon-7 op-5 d-flex m-r-4" name="circle-filled"></i-tabler>
+                                    {{ formatDate(review.timestamp) }}
+                                </span>
+                            </div>
+                            <div>
+                                <mat-icon *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" class="star"
+                                    [color]="i < (review.rating || 0) ? 'accent' : 'default'">
+                                    star
+                                </mat-icon>
+                            </div>
+                        </div>
+                        <p class="mat-body-1 m-t-16 m-l-12 ">
+                            {{ review.review }}
+                        </p>
+
+                        <!-- Uncomment if you need the reply button
+                    <button
+                      mat-mini-fab
+                      color="primary"
+                      class="icon-30 m-t-16"
+                      matTooltip="Reply"
+                      (click)="toggleReply()"
+                    >
+                      <i-tabler name="arrow-back-up" class="icon-18"></i-tabler>
+                    </button>
+                    -->
+                    </div>
+                </div>
+
+                <!-- add comment -->
+                <!-- <div [hidden]="istoggleReply">
+            <form class="d-flex align-items-center m-y-24">
+              <img
+                src="/assets/images/profile/user-1.jpg"
+                alt="user"
+                width="35"
+                class="rounded-circle"
+              />
+              <mat-form-field appearance="outline" class="w-100 hide-hint m-l-16">
+                <input matInput placeholder="Reply" />
+              </mat-form-field>
+              <button mat-flat-button color="primary" class="m-l-16">Reply</button>
+            </form>
+          </div>
+          <div class="bg-light rounded p-24 m-t-24 m-l-24">
+            <div class="d-flex align-items-center">
+              <img
+                src="/assets/images/profile/user-3.jpg"
+                alt="user"
+                width="35"
+                class="rounded-circle"
+              />
+              <span class="mat-body-2 f-w-600 m-l-12">Ethan Gordon</span>
+              <span class="m-l-12 f-s-12 d-flex align-items-center">
+                <i-tabler
+                  class="icon-7 op-5 d-flex m-r-4"
+                  name="circle-filled"
+                ></i-tabler>
+                now
+              </span>
+            </div>
+            <p class="mat-body-1 m-t-16">
+              Diprow wir hilohi ilmi fumow oc co cop iv gi ize tamiv kulok. Bam ci
+              urkati ul negu ovga hivwe toubugof gok imro ale sujoh saput.
+            </p>
+      
+            <button
+              mat-mini-fab
+              color="primary"
+              class="icon-30 m-t-16"
+              matTooltip="Reply"
+              (click)="toggleReply()"
+            >
+              <i-tabler name="arrow-back-up" class="icon-18"></i-tabler>
+            </button>
+          </div> -->
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+
+
+
+
+
+</ng-template>
+
+<app-full [customContent]="customHomePageContent"></app-full>

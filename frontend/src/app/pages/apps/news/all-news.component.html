@@ -1,0 +1,28 @@
+<div class="news-container">
+  <div *ngFor="let slide of slides" class="news-item">
+    <mat-card class="shadow-none bg-light-primary overflow-hidden">
+      <mat-card-content class="p-32 p-b-0">
+        <div class="row d-flex justify-content-between">
+          <div class="col-sm-6 d-flex flex-column tify-content-between">
+            <mat-card-title>{{ slide.title }}</mat-card-title>
+            <!-- <mat-card-subtitle class="mat-body-1 m-t-16 lh-24 m-b-24">
+              {{ truncateText(slide.content, 400) }}
+            </mat-card-subtitle> -->
+            <mat-card-subtitle class="mat-body-1 m-t-16 lh-24 m-b-24" [innerHTML]="slide.content">
+            </mat-card-subtitle>
+            <div>
+              <p>Created at: {{ formatDate(slide.createdAt) }}</p>
+            </div>
+          </div>
+          <div class="col-sm-5 m-b-20 d-flex justify-content-end">
+            <img
+              [src]="slide.thumbnail || 'assets/video-thumbnail.webp'"
+              alt="thumbnail"
+              class="news-thumbnail"
+            />
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

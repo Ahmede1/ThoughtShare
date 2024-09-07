@@ -1,0 +1,63 @@
+.title {
+    font-size: 18px;
+    margin-top: 0px !important;
+}
+
+.play,
+.watchtime {
+    text-align: center;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px;
+    height: max-content;
+}
+
+.play {
+    background-color: #ecf2ff;
+    padding-bottom: 13px;
+}
+
+.watchtime {
+    background-color: #e6fffa;
+}
+
+.watchtime-value {
+    color: #13dec3;
+    margin: 0px 6px;
+    border: 1px solid #13dec3;
+    padding: 0px 5px;
+    border-radius: 5px;
+}
+
+.play-value {
+    margin: 0px 6px;
+    border: 1px solid #5d87ff;
+    color: #5d87ff;
+    padding: 0px 5px;
+    border-radius: 5px;
+}
+
+.cardDescription {
+    margin: 0px;
+    font-size: 12px;
+}
+
+.time {
+    width: 115px;
+}
+
+.timeline .timeline-item {
+    padding: 0px 16px !important;
+    height: max-content !important;
+}
+
+.timeline {
+    height: max-content !important;
+}
+
+@media (max-width: 425px) {
+    .desc {
+        // overflow-x: scroll;
+        flex-direction: column !important;
+    }
+}

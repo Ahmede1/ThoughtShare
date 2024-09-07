@@ -1,0 +1,33 @@
+<h1>{{'Top News' | translate}}</h1>
+
+<div class="item" *ngIf="isLoading">
+  <ngx-skeleton-loader count="5"
+    [theme]="{ 'height': '250px', 'width': '300px', 'margin': '15px', 'border-radius': '10px' }">
+  </ngx-skeleton-loader>
+</div>
+<div *ngIf="!isLoading" class="carousel-container">
+  <span class="nav-btn-div">
+    <button (click)="prev()" class="nav-button left" [disabled]="isPrevDisabled()">
+      <i-tabler name="chevron-left"></i-tabler>
+    </button>
+  </span>
+
+  <div class="carousel-wrapper">
+    <div class="carousel-content" [style.transform]="getTransform()">
+      <div *ngFor="let slide of slides" class="carousel-item">
+        <mat-card>
+          <mat-card-content>
+            <img mat-card-image width="100%" height="50%" [src]="this.getSanitizedUrl(slide.thumbnail)"
+              alt="News thumbnail" style="border: radius 10px" />
+            <h3>{{ truncateText(slide.title, 80) }}</h3>
+            <button mat-flat-button color="primary">{{'Read More'|  translate}}</button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <button (click)="next()" class="nav-button right" [disabled]="isNextDisabled()">
+    <i-tabler name="chevron-right"></i-tabler>
+  </button>
+</div>

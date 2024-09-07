@@ -1,0 +1,12 @@
+.news-thumbnail {
+    border-radius: 10px;
+    width: 70%;
+    object-fit: cover;
+  }
+  
+  @media screen and (max-width: 425px) {
+    .news-thumbnail {
+      width: 100%;
+    }
+  }
+  

@@ -1,0 +1,12 @@
+<div class="p-x-24 ">
+    <h3>{{'Reason for deletion' | translate}} </h3>
+    <mat-form-field appearance="outline" class="w-100" color="primary">
+        <input matInput type="text" [(ngModel)]="deleteReason" />
+        <mat-hint> {{'Please Share your reason to delete this video' | translate}}</mat-hint>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="p-x-24 p-b-24 m-t-20" align="end">
+    <button mat-button (click)="requestDeletion()" class="m-l-8" mat-flat-button color="warn"
+        [disabled]="!deleteReason">{{"Request Delete" | translate}}</button>
+    <button mat-button (click)="doAction()">{{'Cancel' | translate}}</button>
+</div>

@@ -1,0 +1,80 @@
+$MOBILE_VIEW: "screen and (max-width: 768px)";
+$TABLET_VIEW: "screen and (min-width: 769px) and (max-width: 1024px)";
+$MONITOR_VIEW: "screen and (min-width: 1024px)";
+$BELOWMONITOR: "screen and (max-width: 1023px)";
+
+
+.top-videos {
+  margin-top: 50px;
+}
+
+.top-line-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 40px;
+  background-color: var(--background-color); // Use CSS variable for background color to handle dark/light modes
+
+
+  @media #{$MOBILE_VIEW} {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  @media #{$TABLET_VIEW} {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @media #{$MONITOR_VIEW} {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .search-bar {
+    flex-grow: 1;
+    margin-left: 20px;
+    height: 48px; // Set a fixed height for the search bar to match the button height
+
+    @media #{$MOBILE_VIEW} {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+
+  .watch-video-button {
+    // background-color: transparent; // Make the button background transparent
+    color: var(--button-text-color); // Use CSS variable for button text color
+    border: 1px solid gray !important; // Add a border to make the button visible
+    height: 50px; // Match the height of the search bar
+    display: flex;
+    align-items: center;
+    justify-content: center; // Center the text and icon
+    padding: 0px 16px; // Add some padding for the button content
+
+    mat-icon {
+      color: var(--icon-color); // Use CSS variable for icon color
+      margin-right: 8px; // Add some space between the icon and the text
+    }
+  }
+
+  input {
+    background-color: var(--input-bg-color); // Use CSS variable for input background color
+    color: var(--input-text-color); // Use CSS variable for input text color
+  }
+
+  mat-form-field {
+    width: 100%;
+    height: 48px; // Ensure the form field matches the button height
+
+    @media #{$MOBILE_VIEW} {
+      width: 100%;
+    }
+
+    @media #{$TABLET_VIEW},
+    #{$MONITOR_VIEW} {
+      width: auto;
+    }
+  }
+}

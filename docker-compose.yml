@@ -1,0 +1,39 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "4200:4200"
+    networks:
+      - stack
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - mongodb
+      - frontend
+    networks:
+      - stack
+
+  mongodb:
+    image: mongo:4.4
+    volumes:
+      - ./mongodb_data:/data/db
+    networks:
+      - stack
+
+volumes:
+  mongo-data:
+
+networks:
+  stack:
+    driver: bridge

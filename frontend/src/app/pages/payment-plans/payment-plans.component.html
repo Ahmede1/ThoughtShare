@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <h4 class="f-s-30 f-w-600 text-center mat-subtitle-1 lh-lg m-b-16">
+            {{ 'Flexible Plans Tailored to Fit Your Community\'s Unique Needs!' | translate }}
+        </h4>
+        <div class="d-flex align-items-center justify-content-center">
+            <span class="f-s-14 m-r-8">{{ 'Monthly' | translate }}</span>
+            <mat-slide-toggle [(ngModel)]="showYearly" color="primary">{{ 'Yearly' | translate }}</mat-slide-toggle>
+        </div>
+    </div>
+</div>
+
+<div class="row m-t-32 p-t-32 justify-content-center">
+    <div class="col-sm-6 col-lg-4">
+        <mat-form-field class="w-100">
+            <mat-label>{{ 'Currency' | translate }}</mat-label>
+            <mat-select [(ngModel)]="selectedCurrency">
+                <mat-option *ngFor="let currency of paymentPlans.currencies" [value]="currency">
+                    {{ currency }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-card class="cardWithShadow">
+            <mat-card-content class="p-y-24">
+                <span class="popular-badge text-uppercase bg-light-warning text-warning p-x-8 p-y-4 f-s-12 f-w-500 rounded">
+                    {{ 'Popular' | translate }}
+                </span>
+                <img alt="badge" width="90" src="/assets/images/backgrounds/gold.png">
+                <h2 class="mat-headline-6 plan-title m-b-24">
+                    {{ showYearly ? currentPlan.yearly : currentPlan.monthly }} {{ selectedCurrency }}
+                </h2>
+                <p>{{ currentPlan.description }}</p>
+                <button mat-flat-button color="primary" class="w-100 m-t-24" (click)="purchaseSubscription()">
+                    {{ 'Subscribe' | translate }}
+                </button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

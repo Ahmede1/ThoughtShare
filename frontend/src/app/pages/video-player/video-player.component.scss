@@ -1,0 +1,166 @@
+mat-card {
+    box-shadow: none;
+}
+
+.matHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px !important;
+
+}
+
+.filled {
+    color: #ffb400;
+}
+
+.mat-mdc-card-content {
+    padding: 0px;
+}
+
+.tags-container {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #e0e0e0;
+    border-radius: 15px;
+    padding: 5px 8px;
+    margin: 0 5px 5px 0;
+    font-size: 14px;
+}
+
+.video-n-details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.star {
+    font-size: 16px;
+    width: max-content;
+}
+
+.video-player {
+    width: 85%;
+    border-radius: 15px;
+}
+
+.video-info {
+    font-size: 16px;
+    width: 100%;
+    padding: 0 10px;
+    margin: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+
+}
+
+.creator-info,
+.ratings,
+.rank-info {
+    text-align: start !important;
+}
+
+.thumb-icons {
+    margin-top: 25px;
+}
+
+.vote-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    padding: 3px 5px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .video-n-details {
+        flex-direction: row;
+    }
+
+    .video-info {
+        width: 28%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-top: 0;
+    }
+
+    .pageWrapper {
+        padding: 0px !important;
+    }
+
+    .creator-info,
+    .ratings,
+    .rank-info {
+        text-align: center;
+    }
+}
+
+@media (max-width: 426px) {
+    .video-n-details {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .video-info {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        margin-top: 20;
+    }
+
+    .create-n-follow {
+        flex-direction: column;
+        justify-content: start !important;
+        align-items: start !important;
+    }
+
+    .autorName {
+        margin-top: 0px !important;
+    }
+
+    .pageWrapper {
+        padding: 0px !important;
+    }
+
+    .video-player {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .video-player {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .thumb-icons {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .rank-info {
+        flex-direction: column;
+    }
+
+    .creator-info {
+        width: max-content;
+        text-align: start;
+    }
+
+    .ratings,
+    .rank-info {
+        text-align: center;
+    }
+}

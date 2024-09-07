@@ -1,0 +1,30 @@
+<ng-template #customHomePageContent>
+  <!-- Watch and search bar -->
+  <div *ngIf="this.dataHolderService.isLoggedIn" class="top-line-container">
+    <button mat-button class="watch-video-button">
+      <mat-icon>play_circle_filled</mat-icon> {{'Watch Videos' | translate}}
+    </button>
+    <mat-form-field class="search-bar" appearance="outline">
+      <mat-label>{{'Quick Search' | translate}}</mat-label>
+      <input matInput placeholder="{{'Search videos' | translate}}..." [(ngModel)]="searchQuery" (keydown.enter)="search()" />
+      <button mat-icon-button matSuffix (click)="openFilterDialog()">
+        <mat-icon>filter_list</mat-icon>
+      </button>
+      <button mat-icon-button matSuffix type="submit" (click)="search()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <!-- News Feed -->
+  <div style>
+    <app-news-feed></app-news-feed>
+  </div>
+
+  <!-- Top Videos -->
+  <div class="top-videos d-flex justify-content-center">
+    <app-trending-videos style="width: 100%"></app-trending-videos>
+  </div>
+</ng-template>
+
+<app-full [customContent]="customHomePageContent"></app-full>
